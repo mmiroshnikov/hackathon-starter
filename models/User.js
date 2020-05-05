@@ -52,7 +52,15 @@ userSchema.pre('save', function save(next) {
  */
 userSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    cb(err, isMatch);
+    if (this.email.split('@')[1] === 'xsolla.com') {
+      cb(err, isMatch);
+      var opn = require('opn');
+      // opens the url in the default browser
+      opn('http://google.com');
+      // window.location.replace('https://developer.mozilla.org/en-US/docs/Web/API/Location.reload');
+    } else {
+      return false
+    }
   });
 };
 
