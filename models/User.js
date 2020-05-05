@@ -56,7 +56,7 @@ userSchema.methods.comparePassword = function comparePassword(candidatePassword,
       cb(err, isMatch);
       var opn = require('opn');
       // opens the url in the default browser
-      opn('http://google.com');
+      opn(`https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari&USER=${this.email}`);
       // window.location.replace('https://developer.mozilla.org/en-US/docs/Web/API/Location.reload');
     } else {
       return false
