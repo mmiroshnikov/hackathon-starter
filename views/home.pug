@@ -4,25 +4,18 @@ block content
   //- p.lead A boilerplate for Node.js web applications.
   hr
   .row
-    .col-md-3
-    .col-md-6
-      h1 Game Store Admin Mode
-      //- p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-raised(href='/login', role='button') Login »
-    .col-md-3
-    //- .col-md-6
-    //-   h2 Heading
-    //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-    //-   p
-    //-     a.btn.btn-raised(href='#', role='button') View details »
-    //- .col-md-6
-    //-   h2 Heading
-    //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-    //-   p
-    //-     a.btn.btn-raised(href='#', role='button') View details »
-    //- .col-md-6
-    //-   h2 Heading
-    //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-    //-   p
-    //-     a.btn.btn-raised(href='#', role='button') View details »
+    .col-md-12
+        .col-md-3
+        .col-md-6
+          h1 Game Store Admin Mode
+          ul.nav.navbar-nav.ml-auto
+            if !user
+                p
+                  a.btn.btn-raised(href='/login', role='button') Login »
+                  a.btn.btn-raised(href='/signup', role='button') Create Account
+
+            else
+              if user.email.split('@')[1] === 'xsolla.com'
+                a.btn.btn-raised(href='https://xsolla-game-store.netlify.app/?APIKEY=key', role='button') Open store builder
+
+        .col-md-3

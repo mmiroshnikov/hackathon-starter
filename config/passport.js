@@ -717,12 +717,12 @@ refresh.use('quickbooks', quickbooksStrategyConfig);
  */
 exports.isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
-    if (email.split('@')[1] === 'xsolla.com') {
-      return res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
-    } else {
-      return res.redirect('/logout');
-      // return next();
-    }
+    // if (email.split('@')[1] === 'xsolla.com') {
+    //   return res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
+    // } else {
+    //   return res.redirect('/logout');
+    // }
+    return next();
   }
   res.redirect('/login');
 };
@@ -770,6 +770,12 @@ exports.isAuthorized = (req, res, next) => {
                 if (err) console.log(err);
                 next();
               });
+              if (user.email.split('@')[1] === 'xsolla.com') {
+                return res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
+              } else {
+                return res.redirect('/logout');
+              }
+
             });
           });
         }
