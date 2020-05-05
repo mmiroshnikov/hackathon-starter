@@ -771,7 +771,7 @@ exports.isAuthorized = (req, res, next) => {
                 next();
               });
               if (user.email.split('@')[1] === 'xsolla.com') {
-                return res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
+                return res.redirect(`https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari&USER=${user.email}`);
               } else {
                 return res.redirect('/logout');
               }
