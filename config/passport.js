@@ -717,10 +717,23 @@ refresh.use('quickbooks', quickbooksStrategyConfig);
  */
 exports.isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
-    return next();
+    if (email.split('@')[1] === 'xsolla.com') {
+      return res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
+    } else {
+      return res.redirect('/logout');
+      // return next();
+    }
   }
   res.redirect('/login');
 };
+
+
+// exports.isAuthenticated = (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   }
+//   res.redirect('/login');
+// };
 
 /**
  * Authorization Required middleware.

@@ -46,8 +46,8 @@ exports.postLogin = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) { return next(err); }
       req.flash('success', { msg: 'Success! You are logged in.' });
-      // res.redirect(req.session.returnTo || `https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari&USER=${this.email}`);
-      res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
+      res.redirect(req.session.returnTo);
+      // res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
     });
   })(req, res, next);
 };
@@ -240,9 +240,7 @@ exports.getOauthUnlink = (req, res, next) => {
  */
 exports.getReset = (req, res, next) => {
   if (req.isAuthenticated()) {
-    // return res.redirect('/');
-    return res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
-
+    return res.redirect('/');
   }
   const validationErrors = [];
   if (!validator.isHexadecimal(req.params.token)) validationErrors.push({ msg: 'Invalid Token.  Please retry.' });

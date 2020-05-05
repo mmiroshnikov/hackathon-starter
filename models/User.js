@@ -52,16 +52,7 @@ userSchema.pre('save', function save(next) {
  */
 userSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    var opn = require('opn');
-    if (this.email.split('@')[1] === 'xsolla.com') {
-      cb(err, isMatch);
-      // opens the url in the default browser
-      // opn('_self', ` https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari&USER=${this.email}`);
-      // window.location.replace('https://google.com');
-    } else {
-      // window.location.replace('https://ya.ru');
-      // opn('_self', `/logout`)
-    }
+    cb(err, isMatch);
   });
 };
 
