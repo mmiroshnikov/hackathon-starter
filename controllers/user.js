@@ -46,7 +46,15 @@ exports.postLogin = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) { return next(err); }
       req.flash('success', { msg: 'Success! You are logged in.' });
-      res.redirect(req.session.returnTo);
+
+      if (user.email.split('@')[1] === 'xsolla.com') {
+        res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
+      } else {
+        res.redirect('/logout');
+        // return next();
+      }
+
+      // res.redirect(req.session.returnTo);
       // res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
     });
   })(req, res, next);
