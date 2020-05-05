@@ -50,6 +50,7 @@ exports.postLogin = (req, res, next) => {
       if (user.email.split('@')[1] === 'xsolla.com') {
         res.redirect('https://xsolla-game-store.netlify.app/?APIKEY=key2e5vqPmfmASari');
       } else {
+        req.flash('error', { msg: 'You have no access. If you believe you should have it, please email m.miroshnikov@xsolla.com.' });
         res.redirect('/logout');
         // return next();
       }
